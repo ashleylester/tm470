@@ -69,4 +69,7 @@ public class Account implements Serializable {
         this.isSuperuser = superuser;
     }
     
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 }
