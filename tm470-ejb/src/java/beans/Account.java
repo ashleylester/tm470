@@ -2,49 +2,71 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Account implements Serializable {
-    private static final long serialVersionUID = 1L;
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    public Long getId() {
-        return id;
+    private String username;
+    @ManyToOne
+    private Account approvedBy;
+    @NotNull
+    private String password;
+    @NotNull
+    private String name;
+    @NotNull
+    @Column(name = "is_superuser")
+    private boolean isSuperuser;
+    @NotNull
+    @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+    
+    public Account() {
     }
-
-    public void setId(Long id) {
-        this.id = id;
+    
+    public Account(String username, String password, String name, boolean isSuperuser, Date createdAt) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.isSuperuser = isSuperuser;
+        this.createdAt = createdAt;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    
+    public String getUsername() {
+        return username;
     }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Account)) {
-            return false;
-        }
-        Account other = (Account) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    
+    public String getPassword() {
+        return password;
     }
-
-    @Override
-    public String toString() {
-        return "beans.Account[ id=" + id + " ]";
+    
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public boolean isSuperuser() {
+        return isSuperuser;
+    }
+    
+    public void setSuperuser(boolean superuser) {
+        this.isSuperuser = superuser;
     }
     
 }
