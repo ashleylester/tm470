@@ -15,14 +15,30 @@
 
 
         <div id="top" class="top">
-            <ui:insert name="top">Top</ui:insert>
+            <ui:insert name="top">Birchwood -> Home</ui:insert>
         </div>
         <div>
             <div id="left">
-                <ui:insert name="left">Left</ui:insert>
+                <ui:insert name="left">
+                    <h:panelGrid columns="1">
+                        <h:outputLink class="menu_link" value="survey.xhtml">Create Survey</h:outputLink><br />
+                        <h:outputLink class="menu_link" value="attribute.xhtml">Inspect Attribute</h:outputLink><br />
+                        <h:outputLink class="menu_link" value="createAttribute.xhtml">Create Attribute</h:outputLink><br />
+                        <h:outputLink class="menu_link" value="account.xhtml">Create Account</h:outputLink><br />
+                        <h:outputLink class="menu_link" value="parameter.xhtml">Define Parameter</h:outputLink><br />
+                        <h:outputLink class="menu_link" value="createProperty.xhtml">Create Property</h:outputLink><br />
+                        <h:outputLink class="menu_link" value="amendProperty.xhtml">Amend Property</h:outputLink><br />
+                        <h:outputLink class="menu_link" value="amendSurvey.xhtml">Amend Survey</h:outputLink><br />
+                    </h:panelGrid>
+                </ui:insert>
             </div>
             <div id="content" class="left_content">
-                <ui:insert name="content">Content</ui:insert>
+                <ui:insert name="content">
+                    <h:outputLink value="search.xhtml">Search for a property</h:outputLink>
+                </ui:insert>
+            </div>
+            <div id="main_content" class="left_content">
+                <ui:insert name="main_content">Content</ui:insert>
             </div>
         </div>
     </h:body>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+    <ui:composition template="homeTemplate.xhtml">
+        <ui:insert name="left"></ui:insert>
+        <ui:insert name="content" rendered="false"></ui:insert>
+        <ui:define name="main_content">
+            <h:form id="createPropertyForm">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="UPRN *" />
+                    <h:inputText value="#{propertyController.property.uprn}" />
+                    <h:outputLabel value="Property Number" />
+                    <h:inputText value="#{propertyController.property.propertyNumber}" />
+                    <h:outputLabel value="Property Name" />
+                    <h:inputText value="#{propertyController.property.propertyName}" />
+                    <h:outputLabel value="Street *" />
+                    <h:inputText value="#{propertyController.property.street}" />
+                    <h:outputLabel value="District" />
+                    <h:inputText value="#{propertyController.property.district}" />
+                    <h:outputLabel value="City *" />
+                    <h:inputText value="#{propertyController.property.city}" />
+                    <h:outputLabel value="Postcode *" />
+                    <h:inputText value="#{propertyController.property.postcode}" />
+                </h:panelGrid>
+                <h:commandButton value="Create Property" action="#{propertyController.createProperty}" />
+                <h:outputLabel id="confirmPropertyCreation" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

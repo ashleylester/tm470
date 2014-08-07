@@ -37,9 +37,13 @@
 .left_content {
     background-color: #dddddd;
     padding: 5px;
+    margin-bottom: 10px;
     margin-left: 170px;
 }
 
+.menu_link {
+    border-bottom: 10px;
+}
 .right_content {
     background-color: #dddddd;
     padding: 5px;
