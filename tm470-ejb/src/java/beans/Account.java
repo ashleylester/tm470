@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,7 +18,8 @@ public class Account implements Serializable {
     @Id
     private String username;
     @ManyToOne
-    private Account approvedBy;
+    @JoinColumn(name = "created_by")
+    private Account createdBy;
     @NotNull
     private String password;
     @NotNull
@@ -41,16 +43,20 @@ public class Account implements Serializable {
         this.createdAt = createdAt;
     }
     
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
     public String getUsername() {
         return username;
     }
     
-    public String getPassword() {
-        return password;
-    }
-    
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public String getPassword() {
+        return password;
     }
     
     public String getName() {

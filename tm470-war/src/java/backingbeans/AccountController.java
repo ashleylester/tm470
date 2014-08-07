@@ -3,12 +3,12 @@ package backingbeans;
 
 import beans.Account;
 import beans.AccountEJB;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named(value = "accountController")
-@Dependent
+@RequestScoped
 public class AccountController {
     
     @Inject
@@ -16,6 +16,10 @@ public class AccountController {
     private Account account = new Account();
     
     public AccountController() {
+    }
+    
+    public Account getAccount() {
+        return account;
     }
     
     public String authenticate() {
