@@ -3,13 +3,14 @@ package backingbeans;
 
 import beans.Account;
 import beans.AccountEJB;
-import javax.enterprise.context.RequestScoped;
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named(value = "accountController")
-@RequestScoped
-public class AccountController {
+@SessionScoped
+public class AccountController implements Serializable {
     
     @Inject
     private AccountEJB accountEJB;
