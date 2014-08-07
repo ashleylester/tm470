@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:composition template="loginTemplate.xhtml">
+        <ui:define name="top">Birchwood -> Login</ui:define>
+        <ui:define name="content">
+            
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Username" />
+                    <h:inputText value="#{accountController.account.username}" />
+                    <h:outputLabel value="Password" />
+                    <h:inputSecret value="#{accountController.account.password}"
+                </h:panelGrid>
+                <h:commandButton value="Log In" action="#{accountController.authenticate()}"
+            </h:form>
+            
+        </ui:define>
+    </ui:composition>
+</html>
