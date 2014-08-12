@@ -1,16 +1,65 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+          
+    <ui:composition template="homeTemplate.xhtml">
+        <ui:define name="top">Birchwood Surveys -> Home -> Define Parameters</ui:define>
+        <ui:insert name="left"></ui:insert>
+        <ui:insert name="content"></ui:insert>
+        <ui:define name="main_content">
+            <h1>Define New Parameters</h1>
+            <h3>New Element Group</h3>
+            <p>Please ensure that you are not creating duplicate Element Groups.</p>
+            <h3>New Element</h3>
+            <p>Please ensure that you are not creating duplicate Elements. Note that an Element must be linked to an Element Group. If there are no relevant Element Groups, you can create one.</p>
+            <h3>New Element Group Detail</h3>
+            <p>Please ensure that you are not creating duplicate Element Details. Note that an Element Detail must be linked to an Element and an Element. If there are no relevant Elements, you can create one.</p>
+            <h1>Available Survey Parameters</h1>
+            <h:dataTable styleClass="box-table-a" value="#{parameterEJB.findAllParameters()}" var="p" >
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Element Group" />
+                    </f:facet>
+                    <h:outputText value="#{p.elementGroup}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Element" />
+                    </f:facet>
+                    <h:outputText value="#{p.element}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Element Detail" />
+                    </f:facet>
+                    <h:outputText value="#{p.elementDetail}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Lifecycle" />
+                    </f:facet>
+                    <h:outputText value="#{p.lifecycle}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Measurement" />
+                    </f:facet>
+                    <h:outputText value="#{p.measurement}" />
+                </h:column>
+            </h:dataTable>
+             
+           <!-- <h:form id="defineParameterForm">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Element Group" />
+                    <h:selectOneMenu id="elementGroupComboBox">
+                        <f:selectItems value="#{parameterEJB.findAllParameters()}" var="name"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+            </h:form> -->
+            
+        </ui:define>
+    </ui:composition>
 </html>
